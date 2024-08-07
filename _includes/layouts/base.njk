@@ -32,16 +32,56 @@
 		<style>{% getBundle "css" %}</style>
 		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
 		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
+
+		<style>
+			html {
+    background: #fff;
+    background: linear-gradient(0deg, #e3e2df 0%, #fff 100%);
+    height: 100%;
+}
+body {
+    min-width: 90%;
+}
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: none;
+}
+header,
+#skip {
+    width: 100%;
+}
+header {
+    flex-direction: column;
+    margin: 1em 0 0;
+    padding: 0;
+    gap: 0;
+}
+header nav {
+    width: 100%;
+    background: #2b2b2b;
+    margin: 1em 0 0;
+    padding: 1em;
+}
+header nav a {
+    color: #fff !important;
+}
+#skip {
+    background: #fff;
+}
+</style>
 	</head>
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">{{ metadata.title }}</a>
+			<a href="/" class="home-link"><img src="img/copytec-logo.png" alt="{{ metadata.title }}"></a>
 
 			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
 			<nav>
 				<h2 class="visually-hidden">Top level navigation menu</h2>
+				
 				<ul class="nav">
 				{%- for entry in collections.all | eleventyNavigation %}
 					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
